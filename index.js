@@ -6,6 +6,7 @@ var PORT       = 3000,
     path       = require('path'),
     express    = require('express'),
     bodyParser = require('body-parser'),
+    jade       = require('jade'),
     winston    = require('winston'),
     mongo      = require('mongodb'),
     monk       = require('monk'),
@@ -16,6 +17,8 @@ var app = express()
 
 // Express application setup
 app.set('port', process.env.PORT || PORT)
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
