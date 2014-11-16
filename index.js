@@ -9,7 +9,7 @@ var PORT       = 3000,
     winston    = require('winston'),
     mongo      = require('mongodb'),
     monk       = require('monk'),
-    db         = monk('localhost:27017/nodetest1'),
+    db         = monk(MONGO_URI),
     lib        = require('./lib')
 
 var app = express()
