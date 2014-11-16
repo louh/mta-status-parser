@@ -10,7 +10,7 @@ var PORT       = 3000,
     mongo      = require('mongodb'),
     monk       = require('monk'),
     db         = monk('localhost:27017/nodetest1'),
-    lib        = require('./lib'),
+    lib        = require('./lib')
 
 var app = express()
 
@@ -30,7 +30,7 @@ app.post('/post', function (req, res) {
   console.log(dump)
 
   var db         = req.db,
-      collection = db.get('dumps')
+      collection = db.get('raw')
 
   collection.insert(dump, function (err, doc) {
     if (err) {
