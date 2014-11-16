@@ -25,28 +25,8 @@ app.use(function (req, res, next) {
   next()
 })
 
-app.post('/post', function (req, res) {
-  var dump = req.body
-  console.log(dump)
-
-  var db         = req.db,
-      collection = db.get('raw')
-
-  collection.insert(dump, function (err, doc) {
-    if (err) {
-      res.status(500).send('There was a problem adding the information to the database.')
-    } else {
-      res.status(200).end()
-    }
-  })
-
-})
-
-app.get('/', function (req, res) {
-
-  res.status(200).send('<h1>mta-status-parser</h1><p>hello world.</p>')
-
-})
+app.post('/post', lib.dumper.post)
+app.get('/', lib.viewer.get)
 
 app.listen(app.get('port'), function () {
   winston.info('Listening on port ' + app.get('port'))
