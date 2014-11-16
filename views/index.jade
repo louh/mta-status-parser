@@ -2,9 +2,7 @@ extends _layout
 
 block content
   h1= title
-  p hello world.
-
-  p= data
+  p The first four columns are data as returned by MTA's <a href='http://web.mta.info/status/serviceStatus.txt'>service status API</a>, with the "actual text" field rendering the HTML text blob as-is. The far-right column will be an attempt to parse meaningful summary text from that HTML blob.
 
   table(border=1, cellspacing=1, width='100%')
     tbody
@@ -14,9 +12,10 @@ block content
         th(width='10%') status
         th(width='35%') actual text
         th(width='35%') parse test
-      tr
-        td x
-        td x
-        td x
-        td x
-        td x
+      each entry in data
+        tr(valign='top')
+          td= entry.Date + ' ' + entry.Time
+          td= entry.name
+          td= entry.status
+          td !{entry.text}
+          td TODO
