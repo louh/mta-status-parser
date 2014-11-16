@@ -5,7 +5,7 @@ var PORT    = 3000,
     path    = require('path'),
     express = require('express'),
     winston = require('winston'),
-    lib     = require('lib')
+    lib     = require('./lib')
 
 var app = express()
 
