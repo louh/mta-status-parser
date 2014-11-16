@@ -4,7 +4,8 @@ var PORT    = 3000,
     http    = require('http'),
     path    = require('path'),
     express = require('express'),
-    winston = require('winston')
+    winston = require('winston'),
+    lib     = require('lib')
 
 var app = express()
 
@@ -13,7 +14,7 @@ app.set('port', process.env.PORT || PORT)
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.post('/post', function (req, res) {
-  console.log('req')
+  console.log(req)
   res.status(202).end()
 })
 
