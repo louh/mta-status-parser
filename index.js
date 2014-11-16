@@ -1,11 +1,12 @@
 'use strict';
 
-var PORT    = 3000,
-    http    = require('http'),
-    path    = require('path'),
-    express = require('express'),
-    winston = require('winston'),
-    lib     = require('./lib')
+var PORT       = 3000,
+    http       = require('http'),
+    path       = require('path'),
+    express    = require('express'),
+    bodyParser = require('body-parser'),
+    winston    = require('winston'),
+    lib        = require('./lib')
 
 var app = express()
 
@@ -13,8 +14,10 @@ var app = express()
 app.set('port', process.env.PORT || PORT)
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(bodyParser.json())
+
 app.post('/post', function (req, res) {
-  console.log(req)
+  console.log(req.body)
   res.status(202).end()
 })
 
