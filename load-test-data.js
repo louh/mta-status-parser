@@ -1,7 +1,8 @@
 'use strict';
 
-var PORT       = 3000,
-    MONGO_URI  = 'mongodb://localhost/mta_status',
+// Note: run for local testing ONLY
+
+var MONGO_URI  = 'mongodb://localhost/mta_status',
     fs         = require('fs'),
     mongo      = require('mongodb'),
     monk       = require('monk'),
